@@ -1,12 +1,15 @@
-[gd_scene format=3 uid="uid://6n3mcis2r7bg"]
+[gd_scene format=3 uid="uid://bnub0agonitv5"]
 
-[ext_resource type="PackedScene" uid="uid://d3bwumg0dbc84" path="res://Script/Player/character_body_2d.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dyqyake308e71" path="res://Script/Enemy/enemy.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://d17421hbmt3pe" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bknnd24qauanu" path="res://enemy.tscn" id="2_0xm2m"]
 
-[node name="Main" type="Node2D" unique_id=416300618]
+[node name="Main" type="Node2D" unique_id=1753401105]
 
-[node name="Player" parent="." unique_id=1846539308 instance=ExtResource("1_0xm2m")]
-position = Vector2(106, 104)
+[node name="Player" parent="." unique_id=1741483583 instance=ExtResource("1_ig7tw")]
+position = Vector2(344, 195)
 
-[node name="Enemy" parent="." unique_id=429699020 instance=ExtResource("2_h2yge")]
-position = Vector2(322, 111)
+[node name="Enemy" parent="." unique_id=1719443129 instance=ExtResource("2_0xm2m")]
+position = Vector2(706, 195)
+
+[node name="Enemy2" parent="." unique_id=1301746776 instance=ExtResource("2_0xm2m")]
+position = Vector2(475, 306)
