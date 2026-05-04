@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://cq8r8q1wuhnsc" path="res://Script/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bt5knajdj4dy8" path="res://Script/FSM.gd" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://7mog6gy3q5t0" path="res://Assets/walkcycle/BODY_male.png" id="2_sweqy"]
-[ext_resource type="Script" uid="uid://d11qtabq6d22a" path="res://Script/Player/Player_idle.gd" id="3_i3pqv"]
-[ext_resource type="Script" uid="uid://cwerks4tupbyw" path="res://Script/Player/Player_walk.gd" id="4_hqtel"]
+[ext_resource type="Script" uid="uid://d1tk75vxpyin8" path="res://Script/Player/Player_stealth_encumbered.gd" id="4_2hs0m"]
+[ext_resource type="Script" uid="uid://bmjdxj8qsjdk0" path="res://Script/Player/Player_stealth_default.gd" id="5_1jxqw"]
+[ext_resource type="Script" uid="uid://b0pgx51tf2hog" path="res://Script/Player/Player_stealth_agile.gd" id="6_dw050"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("2_sweqy")
@@ -283,10 +284,13 @@ shape = SubResource("CapsuleShape2D_sh265")
 [node name="FSM" type="Node" parent="." unique_id=1173909628]
 script = ExtResource("2_onrkg")
 
-[node name="state_idle" type="Node" parent="FSM" unique_id=748539233]
-script = ExtResource("3_i3pqv")
+[node name="stealth_encumbered" type="Node" parent="FSM" unique_id=1886526859]
+script = ExtResource("4_2hs0m")
 
-[node name="state_walk" type="Node" parent="FSM" unique_id=681699113]
-script = ExtResource("4_hqtel")
+[node name="stealth_default" type="Node" parent="FSM" unique_id=479523650]
+script = ExtResource("5_1jxqw")
+
+[node name="stealth_agile" type="Node" parent="FSM" unique_id=1016243124]
+script = ExtResource("6_dw050")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=526395631]

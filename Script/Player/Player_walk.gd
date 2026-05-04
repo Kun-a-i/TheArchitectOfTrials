@@ -13,13 +13,19 @@ func Enter():
 	pass
 
 func Update(_delta:float):
-	
+	if Input.is_action_just_pressed("move_down"):
+		print("Debug: Tombol DOWN ditekan!")
+	if Input.is_action_just_pressed("move_up"):
+		print("Debug: Tombol UP ditekan!")
+	if Input.is_action_just_pressed("move_left"):
+		print("Debug: Tombol LEFT ditekan!")
+	if Input.is_action_just_pressed("move_right"):
+		print("Debug: Tombol RIGHT ditekan!")
 
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	if input_dir == Vector2.ZERO:
 		state_transition.emit(self, "state_idle")
-	pass
 
 func UpdatePhysics(delta:float):
 	if input_dir != Vector2.ZERO:

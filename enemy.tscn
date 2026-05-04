@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bc006ugfu26eg" path="res://Assets/walkcycle/BODY_skeleton.png" id="2_iifgy"]
 [ext_resource type="Script" uid="uid://bt5knajdj4dy8" path="res://Script/FSM.gd" id="2_qi2p4"]
 [ext_resource type="Script" uid="uid://c14js5cwnsnky" path="res://Script/Enemy/Enemy_wander.gd" id="4_epg4t"]
+[ext_resource type="Script" uid="uid://ke8q3aqvkuyy" path="res://Script/Enemy/Enemy_alert.gd" id="5_wujgv"]
+[ext_resource type="Script" uid="uid://btej1soarjuuo" path="res://Script/Enemy/Enemy_search.gd" id="6_hb8ge"]
+[ext_resource type="Script" uid="uid://di3ijwhdywehw" path="res://Script/Enemy/Enemy_investigate.gd" id="7_e1ltt"]
+[ext_resource type="Script" uid="uid://dmk48q3higpue" path="res://Script/Enemy/VisionCone.gd" id="8_hb8ge"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yqyl"]
 atlas = ExtResource("2_iifgy")
@@ -288,3 +292,15 @@ script = ExtResource("2_qi2p4")
 
 [node name="state_wander" type="Node" parent="FSM" unique_id=177649771]
 script = ExtResource("4_epg4t")
+
+[node name="state_alert" type="Node" parent="FSM" unique_id=758496379]
+script = ExtResource("5_wujgv")
+
+[node name="state_search" type="Node" parent="FSM" unique_id=1901621079]
+script = ExtResource("6_hb8ge")
+
+[node name="state_investigate" type="Node" parent="FSM" unique_id=65587424]
+script = ExtResource("7_e1ltt")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=948953936]
+script = ExtResource("8_hb8ge")

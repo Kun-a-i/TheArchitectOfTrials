@@ -12,7 +12,7 @@ var wander_time : float
 
 func Enter():
 	print("entering state_wander")
-	enemy = get_tree().get_first_node_in_group("Enemy")
+	enemy = $"../.." as CharacterBody2D
 	player = get_tree().get_first_node_in_group("Player")
 	animation.play("default")
 	move_direction = Vector2(0, 1).normalized()
@@ -22,6 +22,10 @@ func Enter():
 	pass
 
 func Update(_delta:float):
+	if Detected():
+		state_transition.emit(self, "state_alert")
+		return
+
 	wander_time -= _delta
 	if wander_time <=0:
 		wander_time = 2
@@ -46,10 +50,25 @@ func  UpdatePhysics(delta:float):
 		
 		
 func Detected():
+	if not player:
+		return false
+		
+	if enemy.global_position.distance_to(player.global_position) > 200:
+		return false
+		
+	# --- CONE OF VISION CHECK ---
+	var dir_to_player = (player.global_position - enemy.global_position).normalized()
+	# Cek sudut (FOV 90 derajat = 45 derajat ke tiap sisi, PI/4 radian)
+	if abs(enemy.facing_direction.angle_to(dir_to_player)) > PI/4:
+		return false
+		
+	ray.target_position = ray.to_local(player.global_position)
+	ray.force_raycast_update()
+	
 	if ray.is_colliding():
 		var collider = ray.get_collider()
-		if collider.is_in_group("Player"):
-			print("Player detected")
+		if collider and collider.is_in_group("Player"):
+			print("Player detected - Transitioning to Alert!")
 			return true
 	return false
 	
