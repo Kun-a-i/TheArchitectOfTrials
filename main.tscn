@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bnub0agonitv5"]
 
-[ext_resource type="PackedScene" path="res://wall.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://crf5w8jblu4e0" path="res://wall.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d17421hbmt3pe" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bknnd24qauanu" path="res://enemy.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cw8s3dsj3kody" path="res://altar.tscn" id="4_1bvp3"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
 offsets = PackedFloat32Array(0, 0.64910716, 1)
@@ -317,3 +318,6 @@ position = Vector2(224, -330)
 
 [node name="Player" parent="." unique_id=1741483583 instance=ExtResource("1_ig7tw")]
 position = Vector2(-476, 0)
+
+[node name="Altar" parent="." unique_id=1512368680 instance=ExtResource("4_1bvp3")]
+position = Vector2(-389, -72)

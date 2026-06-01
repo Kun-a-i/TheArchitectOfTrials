@@ -3,7 +3,7 @@ class_name Enemy_alert
 
 @onready var ray = $"../../RayCast2D"
 @onready var animation = $"../../EnemyAnim"
-@export var movespeed := int(150)
+@export var movespeed := int(180)
 var enemy : CharacterBody2D
 var player : CharacterBody2D
 
@@ -26,7 +26,7 @@ func Update(_delta:float):
 			enemy.velocity = Vector2.ZERO # Berhenti untuk memukul (Attack State nanti di sini)
 
 func UpdatePhysics(delta:float):
-	enemy.move_and_slide()
+	#enemy.move_and_slide()
 	
 	if abs(enemy.velocity.x) > abs(enemy.velocity.y):
 		if enemy.velocity.x > 0:

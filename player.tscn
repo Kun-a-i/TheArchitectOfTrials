@@ -270,7 +270,10 @@ animations = [{
 radius = 16.0
 height = 54.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hs0m"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1741483583 groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_4flbx")
 
 [node name="PalyerAni" type="AnimatedSprite2D" parent="." unique_id=1891127339]
@@ -294,3 +297,8 @@ script = ExtResource("5_1jxqw")
 script = ExtResource("6_dw050")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=526395631]
+
+[node name="NoiseArea" type="Area2D" parent="." unique_id=817058189]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseArea" unique_id=835477407]
+shape = SubResource("CircleShape2D_2hs0m")

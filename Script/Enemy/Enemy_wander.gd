@@ -4,7 +4,7 @@ class_name enemy_wander
 @onready var ray = $"../../RayCast2D"
 @onready var animation = $"../../EnemyAnim"
 var player : CharacterBody2D
-@export var movespeed := int(100)
+@export var movespeed := int(75)
 var enemy : CharacterBody2D
 var move_direction : Vector2 = Vector2.ZERO
 var wander_time : float
