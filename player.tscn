@@ -299,10 +299,12 @@ script = ExtResource("5_1jxqw")
 script = ExtResource("6_dw050")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=526395631]
+zoom = Vector2(2, 2)
 
 [node name="NoiseArea" type="Area2D" parent="." unique_id=817058189]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseArea" unique_id=835477407]
+position = Vector2(0, 23)
 shape = SubResource("CircleShape2D_2hs0m")
 
 [node name="HUD" parent="." unique_id=1269749214 instance=ExtResource("2_1jxqw")]
