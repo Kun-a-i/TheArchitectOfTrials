@@ -1,20 +1,21 @@
 extends State
-class_name Enemy_investigate
+class_name Enemy_hound_investigate
 
-@onready var ray = $"../../RayCast2D"
 @onready var animation = $"../../EnemyAnim"
-@export var movespeed := int(120)
+@export var movespeed := int(100)
 var enemy: CharacterBody2D
-var player: CharacterBody2D
+var player: Player
 var investigate_timer: float = 5.0
 
 func Enter():
 	enemy = $"../.." as CharacterBody2D
-	player = get_tree().get_first_node_in_group("Player")
+	player = get_tree().get_first_node_in_group("Player") as Player
 	investigate_timer = 5.0
 
 func Update(_delta: float):
-	if Detected():
+	# Hound tidak punya vision — deteksi player murni dari suara langkah
+	if _can_hear_player():
+		enemy.investigate_target = player.global_position
 		state_transition.emit(self, "state_alert")
 		return
 
@@ -44,18 +45,13 @@ func UpdatePhysics(_delta: float):
 	else:
 		animation.play("default")
 
-func Detected() -> bool:
-	if not player:
+func _can_hear_player() -> bool:
+	if not is_instance_valid(player):
 		return false
-	if enemy.global_position.distance_to(player.global_position) > 250:
+	# Pakai noise radius player yang sudah ada — semakin berat beban, semakin jauh kedengeran
+	var noise_shape = player.noise_collision.shape
+	if not noise_shape is CircleShape2D:
 		return false
-	var dir_to_player = (player.global_position - enemy.global_position).normalized()
-	if abs(enemy.facing_direction.angle_to(dir_to_player)) > PI / 4:
-		return false
-	ray.target_position = ray.to_local(player.global_position)
-	ray.force_raycast_update()
-	if ray.is_colliding():
-		var collider = ray.get_collider()
-		if collider and collider.is_in_group("Player"):
-			return true
-	return false
+	var noise_radius = noise_shape.radius
+	var dist = enemy.global_position.distance_to(player.global_position)
+	return dist <= noise_radius

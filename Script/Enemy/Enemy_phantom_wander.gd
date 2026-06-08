@@ -1,33 +1,32 @@
 extends State
-class_name enemy_wander
+class_name Enemy_phantom_wander
 
 @onready var ray = $"../../RayCast2D"
 @onready var animation = $"../../EnemyAnim"
-var player: CharacterBody2D
-@export var movespeed := int(75)
+@export var movespeed := int(60)
 var enemy: CharacterBody2D
+var player: CharacterBody2D
 var move_direction: Vector2 = Vector2.ZERO
 var wander_time: float
 
 func Enter():
+	print("entering state_wander (phantom)")
 	enemy = $"../.." as CharacterBody2D
 	player = get_tree().get_first_node_in_group("Player")
 	animation.play("default")
 	move_direction = Vector2(0, 1).normalized()
-	wander_time = 2
+	wander_time = 2.0
 
 func Update(_delta: float):
+	# Phantom punya vision hampir 360 derajat — tidak bisa disembunyi dari pandangannya
 	if Detected():
 		state_transition.emit(self, "state_alert")
 		return
-
-	if _heard_noise():
-		state_transition.emit(self, "state_investigate")
-		return
+	# Phantom sepenuhnya ignore suara/koin — tidak ada _heard_noise()
 
 	wander_time -= _delta
 	if wander_time <= 0:
-		wander_time = 2
+		wander_time = 2.0
 		move_direction = Vector2(0, -move_direction.y).normalized()
 	enemy.velocity = movespeed * move_direction
 
@@ -44,21 +43,14 @@ func UpdatePhysics(_delta: float):
 		else:
 			animation.play("up_anim")
 
-func _heard_noise() -> bool:
-	var noise_sources = get_tree().get_nodes_in_group("noise_source")
-	for source in noise_sources:
-		if enemy.global_position.distance_to(source.global_position) <= 300.0:
-			enemy.investigate_target = source.global_position
-			return true
-	return false
-
 func Detected() -> bool:
 	if not player:
 		return false
-	if enemy.global_position.distance_to(player.global_position) > 200:
+	# Phantom punya jarak deteksi sedikit lebih pendek tapi FOV hampir penuh (330 derajat)
+	if enemy.global_position.distance_to(player.global_position) > 180:
 		return false
 	var dir_to_player = (player.global_position - enemy.global_position).normalized()
-	if abs(enemy.facing_direction.angle_to(dir_to_player)) > PI / 4:
+	if abs(enemy.facing_direction.angle_to(dir_to_player)) > PI / 1.09:
 		return false
 	ray.target_position = ray.to_local(player.global_position)
 	ray.force_raycast_update()

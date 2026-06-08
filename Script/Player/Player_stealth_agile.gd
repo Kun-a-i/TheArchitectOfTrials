@@ -1,7 +1,7 @@
 extends State
 class_name Player_stealth_agile
 
-@export var movespeed := 180 
+@export var movespeed := 250.0 
 var player : CharacterBody2D
 @onready var animation = $"../../PalyerAni"
 var input_dir := Vector2.ZERO

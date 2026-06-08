@@ -1,7 +1,7 @@
 extends State
 class_name Player_stealth_encumbered
 
-@export var movespeed := 50 # Sangat lambat karena tas penuh
+@export var movespeed := 100.0 # Sangat lambat karena tas penuh
 var player : CharacterBody2D
 @onready var animation = $"../../PalyerAni" # Tetap ikuti typo asli agar tidak error
 var input_dir := Vector2.ZERO

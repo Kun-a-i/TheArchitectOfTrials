@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cw8s3dsj3kody"]
+
+[ext_resource type="Script" uid="uid://b5wmtf5nkkdku" path="res://Script/altar.gd" id="1_eo3o5"]
+[ext_resource type="Texture2D" uid="uid://000mulfs42xr" path="res://icon.svg" id="2_o4c8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo3o5"]
+size = Vector2(71, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4c8i"]
+size = Vector2(54, 54)
+
+[node name="Altar" type="Area2D" unique_id=1512368680]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_eo3o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=328245538]
+position = Vector2(1.000001, -1)
+scale = Vector2(0.42187497, 0.42382813)
+texture = ExtResource("2_o4c8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=70194114]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_eo3o5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=749763138]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1290682975]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_o4c8i")
+
+[node name="UI" type="Control" parent="." unique_id=719664417]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InteractionLabel" type="Label" parent="UI" unique_id=101653630]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -71.0
+offset_right = 88.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[Press Space to fill the altar]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="UI" unique_id=1650942449]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -89.0
+offset_right = 36.0
+offset_bottom = -66.0
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
