@@ -1,6 +1,7 @@
 extends Node
 
 var is_game_over: bool = false
+var current_stage: int = 1  # 1 = Infiltration, 2 = Deposit done, 3 = Escape
 
 func game_over():
 	# Mencegah fungsi dipanggil berkali-kali jika pemain dipukul saat sedang mati
@@ -18,9 +19,20 @@ func game_over():
 	# Menunggu 2 detik secara asinkron
 	await get_tree().create_timer(2.0).timeout
 	
-	# Reset status dan mulai ulang level
 	is_game_over = false
+	current_stage = 1
 	get_tree().reload_current_scene()
+
+func advance_to_escape():
+	current_stage = 3
+	print("=================================")
+	print("QUOTA TERPENUHI! Dungeon Awakened!")
+	print("Segera kabur ke pintu keluar!")
+	print("=================================")
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		var fsm = enemy.get_node_or_null("FSM") as FiniteStateMachine
+		if fsm:
+			fsm.force_change_state("state_alert")
 
 func game_win():
 	if is_game_over: return
@@ -35,4 +47,5 @@ func game_win():
 	
 	# Untuk MVP, kita restart saja dulu. Nanti bisa diganti ke Main Menu / Level 2
 	is_game_over = false
+	current_stage = 1
 	get_tree().reload_current_scene()

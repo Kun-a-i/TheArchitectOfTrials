@@ -8,7 +8,6 @@ var enemy : CharacterBody2D
 var player : CharacterBody2D
 
 func Enter():
-	print("entering state_alert")
 	enemy = $"../.." as CharacterBody2D
 	player = get_tree().get_first_node_in_group("Player")
 
@@ -49,7 +48,10 @@ func UpdatePhysics(delta:float):
 func Detected():
 	if not player:
 		return false
-	if enemy.global_position.distance_to(player.global_position) > 300: # Jarak pandang saat alert lebih jauh
+	# Saat Awakened, enemy selalu kejar player tanpa batas jarak
+	if GameManager.current_stage == 3:
+		return true
+	if enemy.global_position.distance_to(player.global_position) > 300:
 		return false
 		
 	# Saat Alert, kita tetap pakai cone vision tapi jauuh lebih lebar (hampir 180 derajat)

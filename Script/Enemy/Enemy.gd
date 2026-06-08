@@ -8,6 +8,8 @@ var facing_direction: Vector2 = Vector2(0, 1)
 @onready var attack_area = $AttackArea # Sesuaikan nama node Area2D seranganmu
 
 
+var investigate_target: Vector2 = Vector2.ZERO
+
 var player_in_attack_range: Player = null
 var attack_cooldown: float = 0.0
 var attack_rate: float = 1.5 # Musuh akan menyerang setiap 1.5 detik
@@ -67,7 +69,6 @@ func _process(delta):
 				
 				# Berikan dorongan mundur seketika
 				recoil_velocity = recoil_dir * recoil_strength
-				print("BAM! Musuh memukul dan melompat mundur!")
 			else:
 				# Jika pemain sudah tidak valid (mati), kosongkan referensinya
 				player_in_attack_range = null
