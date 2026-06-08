@@ -15,6 +15,10 @@ run/main_scene="uid://bnub0agonitv5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://msp4adneri1o"
+
 [input]
 
 move_up={

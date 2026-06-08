@@ -22,14 +22,14 @@ color_ramp = SubResource("Gradient_0xm2m")
 [node name="Floor" type="Sprite2D" parent="." unique_id=1649053880]
 texture = SubResource("NoiseTexture2D_1bvp3")
 
-[node name="Wall11" parent="." unique_id=1054944080 instance=ExtResource("1_0xm2m")]
-position = Vector2(50, -950)
-
 [node name="Wall12" parent="." unique_id=674467355 instance=ExtResource("1_0xm2m")]
 position = Vector2(150, -950)
 
 [node name="Wall13" parent="." unique_id=1473779413 instance=ExtResource("1_0xm2m")]
 position = Vector2(349, -950)
+
+[node name="Wall11" parent="." unique_id=1054944080 instance=ExtResource("1_0xm2m")]
+position = Vector2(50, -950)
 
 [node name="Wall14" parent="." unique_id=1196746207 instance=ExtResource("1_0xm2m")]
 position = Vector2(449, -950)

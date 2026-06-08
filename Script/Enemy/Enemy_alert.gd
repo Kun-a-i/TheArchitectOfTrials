@@ -26,6 +26,12 @@ func Update(_delta:float):
 			enemy.velocity = Vector2.ZERO # Berhenti untuk memukul (Attack State nanti di sini)
 
 func UpdatePhysics(delta:float):
+	# Sangat bersih! Hanya menghitung arah dan mengatur velocity.
+	if player and enemy.global_position.distance_to(player.global_position) > 40:
+		var direction = (player.global_position - enemy.global_position).normalized()
+		enemy.velocity = movespeed * direction
+	else:
+		enemy.velocity = Vector2.ZERO
 	#enemy.move_and_slide()
 	
 	if abs(enemy.velocity.x) > abs(enemy.velocity.y):
@@ -38,6 +44,7 @@ func UpdatePhysics(delta:float):
 			animation.play("down_anim")
 		else:
 			animation.play("up_anim")
+	
 
 func Detected():
 	if not player:

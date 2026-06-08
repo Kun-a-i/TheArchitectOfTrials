@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bi0fmqd5c0avg"]
+
+[ext_resource type="Script" uid="uid://mgujycb808o3" path="res://hud.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1269749214]
+layer = 10
+script = ExtResource("1_37p78")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1749587452]
+custom_minimum_size = Vector2(110, 10)
+anchors_preset = -1
+anchor_right = 0.0034722222
+anchor_bottom = 0.041666668
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 126.0
+offset_bottom = 20.0
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="GoldLabel" type="Label" parent="." unique_id=1972201403]
+custom_minimum_size = Vector2(110, 10)
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 130.0
+offset_bottom = 78.0
+text = "Gold: 0 / 100"
+
+[node name="StateLabel" type="Label" parent="." unique_id=527737896]
+custom_minimum_size = Vector2(110, 10)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 43.0
+grow_horizontal = 0
+text = "State: Agile"

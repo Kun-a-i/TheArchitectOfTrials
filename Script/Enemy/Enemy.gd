@@ -4,6 +4,9 @@ class_name Enemy
 @onready var fsm = $FSM as FiniteStateMachine
 var facing_direction: Vector2 = Vector2(0, 1)
 
+@onready var animation = $EnemyAnim # Sesuaikan nama node animasimu
+@onready var attack_area = $AttackArea # Sesuaikan nama node Area2D seranganmu
+
 
 var player_in_attack_range: Player = null
 var attack_cooldown: float = 0.0
@@ -30,6 +33,21 @@ func _physics_process(delta):
 	# Pastikan ada pemanggilan move_and_slide() agar musuh benar-benar bergerak
 	# (Jika di dalam script FSM-mu sudah ada move_and_slide(), kamu mungkin tidak perlu baris ini di sini)
 	move_and_slide()
+	if velocity.length() > 0:
+		if abs(velocity.x) > abs(velocity.y):
+			if velocity.x > 0:
+				animation.play("right_anim")
+				attack_area.rotation_degrees = 270
+			else:
+				animation.play("left_anim")
+				attack_area.rotation_degrees = 90
+		else:
+			if velocity.y > 0:
+				animation.play("down_anim")
+				attack_area.rotation_degrees = 0
+			else:
+				animation.play("up_anim")
+				attack_area.rotation_degrees = 180
 
 
 func _process(delta):

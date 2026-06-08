@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d17421hbmt3pe"]
 
 [ext_resource type="Script" uid="uid://cq8r8q1wuhnsc" path="res://Script/Player/Player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bi0fmqd5c0avg" path="res://hud.tscn" id="2_1jxqw"]
 [ext_resource type="Script" uid="uid://bt5knajdj4dy8" path="res://Script/FSM.gd" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://7mog6gy3q5t0" path="res://Assets/walkcycle/BODY_male.png" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://d1tk75vxpyin8" path="res://Script/Player/Player_stealth_encumbered.gd" id="4_2hs0m"]
@@ -302,3 +303,5 @@ script = ExtResource("6_dw050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseArea" unique_id=835477407]
 shape = SubResource("CircleShape2D_2hs0m")
+
+[node name="HUD" parent="." unique_id=1269749214 instance=ExtResource("2_1jxqw")]
