@@ -38,6 +38,10 @@ func update_altar_ui():
 func deposit_gold():
 	if player_in_area.current_gold <= 0.0:
 		return
+	#if player_in_area.current_gold < required_quota:
+	#	return
+	#player_in_area.current_gold = 0.0
+	#GameManager.advance_to_escape()
 
 	var amount_needed = required_quota - current_deposited
 	var amount_to_deposit = min(player_in_area.current_gold, amount_needed)
