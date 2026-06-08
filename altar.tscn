@@ -30,5 +30,37 @@ collision_mask = 0
 position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_o4c8i")
 
+[node name="UI" type="Control" parent="." unique_id=719664417]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InteractionLabel" type="Label" parent="UI" unique_id=101653630]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -71.0
+offset_right = 88.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[Press Space to fill the altar]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="UI" unique_id=1650942449]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -89.0
+offset_right = 36.0
+offset_bottom = -66.0
+text = "0 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

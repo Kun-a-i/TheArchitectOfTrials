@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d1tk75vxpyin8" path="res://Script/Player/Player_stealth_encumbered.gd" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://bmjdxj8qsjdk0" path="res://Script/Player/Player_stealth_default.gd" id="5_1jxqw"]
 [ext_resource type="Script" uid="uid://b0pgx51tf2hog" path="res://Script/Player/Player_stealth_agile.gd" id="6_dw050"]
+[ext_resource type="PackedScene" uid="uid://bn3ex1l7ewcal" path="res://coin_drop.tscn" id="8_dw050"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("2_sweqy")
@@ -305,3 +306,6 @@ script = ExtResource("6_dw050")
 shape = SubResource("CircleShape2D_2hs0m")
 
 [node name="HUD" parent="." unique_id=1269749214 instance=ExtResource("2_1jxqw")]
+
+[node name="CoinDrop" parent="." unique_id=1921560388 instance=ExtResource("8_dw050")]
+visible = false
