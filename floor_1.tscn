@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://0wkjqhq041rp" path="res://Assets/map/TX Struct.png" id="9_bdaq8"]
 [ext_resource type="Texture2D" uid="uid://tfhb53y4grpm" path="res://Assets/map/Extra/TX Plant with Shadow.png" id="10_xnrxe"]
 [ext_resource type="Texture2D" uid="uid://btrrh5gw0ehd2" path="res://Assets/map/Extra/TX Props with Shadow.png" id="11_vbxqm"]
+[ext_resource type="PackedScene" uid="uid://cw8s3dsj3kody" path="res://altar.tscn" id="13_xv0bk"]
+[ext_resource type="PackedScene" uid="uid://bknnd24qauanu" path="res://enemy.tscn" id="14_goiq3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wqxu"]
 texture = ExtResource("1_vkd3l")
@@ -6177,4 +6179,13 @@ tile_map_data = PackedByteArray("AAADAOv/AAAAABgAAAADAOz/AAAAABkAAAAEAOv/AAABABg
 tile_set = SubResource("TileSet_nyle8")
 
 [node name="Player" parent="." unique_id=1741483583 instance=ExtResource("4_vthxg")]
-position = Vector2(216, -344)
+position = Vector2(231, 71)
+
+[node name="Altar" parent="." unique_id=1512368680 instance=ExtResource("13_xv0bk")]
+position = Vector2(624, -1003)
+
+[node name="Enemy" parent="." unique_id=1719443129 instance=ExtResource("14_goiq3")]
+position = Vector2(-101, -460)
+
+[node name="Enemy2" parent="." unique_id=640414551 instance=ExtResource("14_goiq3")]
+position = Vector2(-98, -823)
